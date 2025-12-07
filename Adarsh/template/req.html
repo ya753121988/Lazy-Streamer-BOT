@@ -1,99 +1,200 @@
-<!--(c) adarsh-goel-->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script
-  type="text/javascript"
-  src="//pl27086317.effectivegatecpm.com/58/bf/a6/58bfa61d4e5a88e1fff8b0244e1e12fb.js"
-></script>
-    
-    <meta charset="UTF-8">
-    <meta property="og:image" content="https://i.ibb.co/M8S0Zzj/live-streaming.png" itemprop="thumbnailUrl">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>%s</title>
-    <link rel="stylesheet" type='text/css' href="https://adarsh-goel.github.io/resources/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
+<meta charset="UTF-8" />
+<title>{{file_name}} | Fast Stream</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- Plyr CSS -->
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+/* --- কালার ভেরিয়েবল --- */
+:root {
+  --primary-color: #00ffe5;
+  --bg-color: #0d0d0d;
+  --card-bg: #1a1a1a;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container { max-width: 800px; margin: auto; padding: 15px; }
+
+h2 {
+    font-size: 18px;
+    text-align: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+/* ভিডিও প্লেয়ার ডিজাইন (আপডেট করা হয়েছে) */
+.video-wrapper { 
+  border-radius: 12px; 
+  overflow: hidden; 
+  border: 1px solid #333;
+  box-shadow: 0 4px 20px rgba(0, 255, 229, 0.1);
+  background: #000;
+  /* aspect-ratio সরিয়ে দেওয়া হয়েছে যাতে অটো সাইজ নেয় */
+  width: 100%;
+  height: auto;
+  min-height: 200px; /* লোড হওয়ার আগে যাতে একেবারে ছোট না দেখায় */
+}
+
+/* ভিডিও যাতে কন্টেইনারের বাইরে না যায় */
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Plyr কাস্টমাইজেশন - অটো হাইট */
+.plyr {
+    height: auto !important;
+    width: 100%;
+}
+.plyr__video-wrapper {
+    height: auto !important;
+}
+
+/* বাটন ডিজাইন */
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn { 
+  display: block; 
+  width: 100%; 
+  padding: 12px; 
+  text-align: center; 
+  font-weight: 600; 
+  border-radius: 8px; 
+  text-decoration: none; 
+  font-size: 14px;
+  transition: 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.btn:active { transform: scale(0.96); }
+
+/* স্পেশাল অ্যাপ বাটন */
+.btn-vlc { background: #ff5722; color: white; }
+.btn-mx { background: #2196f3; color: white; }
+
+/* চ্যানেল বাটন */
+.btn-telegram { 
+    background: linear-gradient(45deg, #0088cc, #00bfff); 
+    color: white; 
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.3);
+}
+
+/* অ্যাড বক্স */
+.ad-box { 
+  min-height: 50px;
+  padding: 5px; 
+  border-radius: 8px; 
+  margin: 15px 0; 
+  text-align: center; 
+  border: 1px dashed #333; 
+  background: var(--card-bg); 
+}
+
+.footer { text-align: center; margin-top: 30px; font-size: 11px; color: #555; }
+
+/* Plyr কালার */
+:root { --plyr-color-main: var(--primary-color); }
+</style>
 </head>
 
 <body>
-    <header>
-        <div class="toogle"></div>
-        <div id="file-name">
-            <marquee direction="left"> %s</marquee>
-        </div>
-    </header>
+<div class="container">
 
-    <div class="container">
-        <tag src="%s" class="player"></tag>
+  <h2>{{file_name}}</h2>
+
+  <!-- ১. উপরের বিজ্ঞাপন -->
+  <div class="ad-box">
+    <p style="color:#555; font-size:10px;">Advertisement</p>
+    <script type="text/javascript" src="//pl27974267.effectivegatecpm.com/72/92/c4/7292c40715a3a7347cbc4f26df859499.js"></script>
+  </div>
+
+  <!-- ভিডিও প্লেয়ার -->
+  <div class="video-wrapper">
+    <video id="player" controls crossorigin playsinline>
+    </video>
+  </div>
+
+  <!-- বাটন সেকশন -->
+  <div style="text-align: center; margin-top: 15px;">
+    <p style="font-size: 12px; color: #aaa; margin-bottom: 5px;">⚠️ Video buffering? Play in App:</p>
+    <div class="btn-grid">
+        <a href="intent:{{file_url}}#Intent;package=org.videolan.vlc;type=video/*;end" class="btn btn-vlc">🚀 Play in VLC</a>
+        <a href="intent:{{file_url}}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;end" class="btn btn-mx">⚡ Play in MX</a>
     </div>
+  </div>
 
-    <footer>
-        <h4><a href="tg://resolve?domain=direct_link_generator_658_bot" style="color:rgb(10, 103, 100)">Make your own Link &emsp;
-                &emsp;</a></h4>
-        <span id="fork-text">Fork me on</span>
-        <span>
-            <a href="https://github.com/LazyDeveloperr/Lazy-Streamer-BOT" id='github-logo'>
-                <svg id='octo' style="width: 1.2rem; padding-left: 5px; fill: var(--footer-icon-color)"
-                    xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
-                    <path
-                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-            </a>
+  <!-- টেলিগ্রাম বাটন -->
+  <a href="https://t.me/+J4SmKjWRDqpjY2Nl" class="btn btn-telegram">📢 Join Main Channel</a>
+  <a href="https://t.me/+J4SmKjWRDqpjY2Nl" class="btn btn-telegram">🔔 Join Updates Channel</a>
 
-        </span>
+  <!-- ২. মাঝখানের বিজ্ঞাপন -->
+  <div class="ad-box">
+    <script type="text/javascript" src="//pl27974267.effectivegatecpm.com/72/92/c4/7292c40715a3a7347cbc4f26df859499.js"></script>
+  </div>
 
-    </footer>
+  <!-- ৩. নিচের বিজ্ঞাপন -->
+  <div class="ad-box">
+    <script type="text/javascript" src="//pl27974267.effectivegatecpm.com/72/92/c4/7292c40715a3a7347cbc4f26df859499.js"></script>
+  </div>
 
+  <div class="footer">Powered by AV Botz</div>
+</div>
 
-    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
-    <script>
-        const controls = [
-            'play-large',
-            'rewind',
-            'play',
-            'fast-forward',
-            'progress',
-            'current-time',
-            'duration',
-            'mute',
-            'volume',
-            'captions',
-            'settings',
-            'pip',
-            'airplay',
-            'download',
-            'fullscreen'
-        ];
-        document.addEventListener('DOMContentLoaded', () => {
-            const player = Plyr.setup('.player', { controls });
-        });
+<!-- ৪. পপ-আন্ডার বিজ্ঞাপন -->
+<script type="text/javascript" src="//pl27974255.effectivegatecpm.com/fb/97/40/fb9740bececcc7766d98eaa666b7f399.js"></script>
 
-        const body = document.querySelector('body');
-        const footer = document.querySelector('footer');
-        const toogle = document.querySelector('.toogle');
-        toogle.onclick = () => {
-            body.classList.toggle('dark')
-            footer.classList.toggle('dark')
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('player');
+        const source = "{{file_url}}";
+
+        // Plyr অপশন কনফিগারেশন
+        const defaultOptions = {
+            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+            speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+            ratio: null, // এটি null রাখলে ভিডিওর অরিজিনাল সাইজ অনুযায়ী প্লেয়ার সেট হবে (লম্বা বা চ্যাপ্টা)
+            resetOnEnd: true
+        };
+
+        if (Hls.isSupported() && (source.endsWith('.m3u8') || source.includes('.m3u8'))) {
+            const hls = new Hls();
+            hls.loadSource(source);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                new Plyr(video, defaultOptions);
+            });
+        } else {
+            video.src = source;
+            new Plyr(video, defaultOptions);
         }
-    </script>
+    });
+</script>
+
 </body>
-    <script
-  async="async"
-  data-cfasync="false"
-  src="//pl27716245.effectivegatecpm.com/54ee6745b71d138e7d917e7c9e4871cf/invoke.js"
-></script>
-<div id="container-54ee6745b71d138e7d917e7c9e4871cf"></div>
-
-    <head>
-        <script
-  type="text/javascript"
-  src="//pl27086336.effectivegatecpm.com/e1/c7/cb/e1c7cba8047534fa081eed07b4774cb3.js"
-></script>
-
-
 </html>
