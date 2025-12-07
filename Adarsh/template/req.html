@@ -8,247 +8,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>%s</title>
-    <!-- Old CSS kept as backup, but overridden below -->
     <link rel="stylesheet" type='text/css' href="https://adarsh-goel.github.io/resources/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-    <style>
-        /* Modern Styling Overrides */
-        :root {
-            --primary-color: #00bcd4;
-            --bg-dark: #121212;
-            --bg-card: #1e1e1e;
-            --text-color: #ffffff;
-            --glass: rgba(255, 255, 255, 0.05);
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-color);
-            font-family: 'Raleway', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header Styling */
-        header {
-            background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        #file-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
-            width: 80%%; /* Fixed for Python string formatting */
-        }
-
-        .toogle {
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            background: #fff;
-            border-radius: 50%%; /* Fixed for Python string formatting */
-            margin-right: 15px;
-            /* Simple toggle indicator */
-            border: 2px solid var(--primary-color);
-        }
-
-        /* Player Container */
-        .container {
-            width: 90%%; /* Fixed for Python string formatting */
-            max-width: 900px;
-            margin: 30px auto;
-            background: var(--bg-card);
-            padding: 10px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--glass);
-        }
-
-        .plyr {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        /* Social & Product Section */
-        .extra-content {
-            text-align: center;
-            padding: 20px;
-            background: var(--bg-card);
-            margin: 20px auto;
-            width: 90%%; /* Fixed for Python string formatting */
-            max-width: 880px;
-            border-radius: 15px;
-            border: 1px solid var(--glass);
-        }
-
-        .extra-title {
-            font-family: 'Delius', cursive;
-            margin-bottom: 15px;
-            color: #ccc;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            background: var(--glass);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border: 1px solid transparent;
-        }
-
-        .social-btn:hover {
-            background: var(--primary-color);
-            color: #000;
-            box-shadow: 0 0 15px var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Telegram Button Style */
-        .telegram-btn-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .tg-main-btn {
-            background: linear-gradient(45deg, #0088cc, #36aee2);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            box-shadow: 0 5px 20px rgba(0, 136, 204, 0.4);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .tg-main-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background: #000;
-            padding: 20px;
-            text-align: center;
-            border-top: 2px solid var(--primary-color);
-        }
-
-        footer h4 a {
-            text-decoration: none;
-            color: var(--primary-color) !important;
-        }
-
-        #fork-text {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        #github-logo svg {
-            fill: #fff;
-            transition: 0.3s;
-        }
-
-        #github-logo:hover svg {
-            fill: var(--primary-color);
-        }
-
-        /* Dark/Light Logic Keep */
-        body.dark { background: #f0f0f0; color: #000; }
-        body.dark .container, body.dark .extra-content { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        body.dark header { background: #ddd; color: #000; }
-        
-    </style>
 </head>
 
 <body>
     <header>
-        <div class="toogle" title="Switch Theme"></div>
+        <div class="toogle"></div>
         <div id="file-name">
-            <marquee direction="left" scrollamount="6"> 🎬 Now Playing: %s</marquee>
+            <marquee direction="left"> %s</marquee>
         </div>
     </header>
 
     <div class="container">
-        <!-- DO NOT CHANGE THIS LINE - SYSTEM VARIABLES -->
         <tag src="%s" class="player"></tag>
     </div>
 
-    <!-- New Section: Telegram Button -->
-    <div class="telegram-btn-container">
-        <!-- EDIT YOUR TELEGRAM LINK HERE -->
-        <a href="https://t.me/YOUR_CHANNEL_LINK_HERE" class="tg-main-btn">
-            <i class="fab fa-telegram-plane"></i> Join Our Telegram Channel
-        </a>
-    </div>
-
-    <!-- New Section: Social Markets & Products -->
-    <div class="extra-content">
-        <h3 class="extra-title">Follow Us & Products</h3>
-        <div class="social-icons">
-            <!-- Example Links: Replace # with your links -->
-            <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i> Facebook</a>
-            <a href="#" class="social-btn"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="#" class="social-btn"><i class="fas fa-shopping-cart"></i> My Shop</a>
-            <a href="#" class="social-btn"><i class="fas fa-globe"></i> Website</a>
-        </div>
-    </div>
-
     <footer>
-        <h4>
-            <a href="tg://resolve?domain=direct_link_generator_658_bot">
-                <i class="fas fa-robot"></i> Make your own Link
+        <h4><a href="tg://resolve?domain=direct_link_generator_658_bot" style="color:rgb(10, 103, 100)">Make your own Link &emsp;
+                &emsp;</a></h4>
+        <span id="fork-text">Fork me on</span>
+        <span>
+            <a href="https://github.com/LazyDeveloperr/Lazy-Streamer-BOT" id='github-logo'>
+                <svg id='octo' style="width: 1.2rem; padding-left: 5px; fill: var(--footer-icon-color)"
+                    xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
             </a>
-        </h4>
-        <div style="margin-top: 10px;">
-            <span id="fork-text">Powered by LazyStreamer | Fork me on</span>
-            <span>
-                <a href="https://github.com/LazyDeveloperr/Lazy-Streamer-BOT" id='github-logo'>
-                    <svg id='octo' style="width: 1.2rem; padding-left: 5px; vertical-align: middle;"
-                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 35 35">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                </a>
-            </span>
-        </div>
+
+        </span>
+
     </footer>
 
 
     <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
     <script>
         const controls = [
-            'play-large', 'rewind', 'play', 'fast-forward', 'progress',
-            'current-time', 'duration', 'mute', 'volume', 'captions',
-            'settings', 'pip', 'airplay', 'download', 'fullscreen'
+            'play-large',
+            'rewind',
+            'play',
+            'fast-forward',
+            'progress',
+            'current-time',
+            'duration',
+            'mute',
+            'volume',
+            'captions',
+            'settings',
+            'pip',
+            'airplay',
+            'download',
+            'fullscreen'
         ];
         document.addEventListener('DOMContentLoaded', () => {
             const player = Plyr.setup('.player', { controls });
@@ -257,14 +71,36 @@
         const body = document.querySelector('body');
         const footer = document.querySelector('footer');
         const toogle = document.querySelector('.toogle');
-        
-        // Theme Toggle Logic
         toogle.onclick = () => {
-            body.classList.toggle('dark');
-            // Adding subtle transition for smoother switch
-            body.style.transition = "background 0.5s ease, color 0.5s ease";
+            body.classList.toggle('dark')
+            footer.classList.toggle('dark')
         }
     </script>
 </body>
+    <script
+  async="async"
+  data-cfasync="false"
+  src="//pl27716245.effectivegatecpm.com/54ee6745b71d138e7d917e7c9e4871cf/invoke.js"
+></script>
+<div id="container-54ee6745b71d138e7d917e7c9e4871cf"></div>
+
+    <head>
+        <script
+  type="text/javascript"
+  src="//pl27086336.effectivegatecpm.com/e1/c7/cb/e1c7cba8047534fa081eed07b4774cb3.js"
+></script>
+
+        <head>
+            
+        </head>
+        <script
+  type="text/javascript"
+  src="//pl27086317.effectivegatecpm.com/58/bf/a6/58bfa61d4e5a88e1fff8b0244e1e12fb.js"
+></script>
+        <body>
+            
+        </body>
+        
+        
 
 </html>
